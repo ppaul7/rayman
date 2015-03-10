@@ -1,0 +1,6 @@
+app/*.html
+app/blog
+app/components
+node_modules
+dist
+.tmp

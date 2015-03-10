@@ -1,0 +1,19 @@
+---
+title: Omicelo
+author: Test
+title: Test
+body: Test
+---
+{{> prefix-blog }}
+
+<div class="editorial-header">
+  <div class="container">
+
+    <h1 class="editorial-header__title color--performance" data-scroll-reveal>{{ file.frontMatter.author }}</h1>
+    <h2 class="editorial-header__subtitle color--performance" data-scroll-reveal>{{ file.frontMatter.title }}</h2>
+    <p class="editorial-header__excerpt" data-scroll-reveal>{{ file.frontMatter.body }}</p>
+
+  </div>
+</div>
+
+{{> postfix }}

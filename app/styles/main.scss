@@ -1,0 +1,651 @@
+/**
+ * Rayman App
+ * Copyright(c) 2014 Koreviz
+ * MIT Licensed
+ */
+
+@import '_h5bp';
+
+/*
+ * Visual Style Guide styles
+ * Remove if you prefer to use a CSS library, like Bootstrap
+ */
+@import 'components/components';
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  background-color: #fff;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+body.open {
+  overflow: hidden;
+}
+
+.app-bar {
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #7B5294;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.app-bar-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  /* height: 60px; */
+  position: relative;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 0 auto;
+}
+
+.app-bar.open,
+.app-bar.open ~ main {
+  -webkit-transform: translate(250px, 0);
+          transform: translate(250px, 0);
+}
+
+.app-bar .logo {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 2em;
+  line-height: 60px;
+  margin: 0 16px;
+  padding: 0;
+  color: #fefefe;
+  float: none;
+  max-width: none;
+  font-weight: 300;
+  display: initial;
+}
+
+.app-bar .logo a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: normal;
+}
+
+.app-bar-actions {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  z-index: 2;
+}
+
+.app-bar button {
+  width: 60px;
+  height: 60px;
+  background-image: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: inline-block;
+  -webkit-transition: background-color 0.2s ease-out;
+          transition: background-color 0.2s ease-out;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-bar button img {
+  height: 24px;
+  width: 24px;
+}
+
+.app-bar button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.app-bar button:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  outline: 0;
+}
+
+.app-bar button:active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.promote-layer {
+  /*
+  This may promote the layer to a composited
+  layer.
+
+  Replace with will-change when available
+
+  #perfmatters
+  */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.base,
+p,
+ul,
+ol {
+  font-size: 19px;
+}
+
+.navdrawer-container {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  height: 100%;
+  background-color: rgba(123,82,148,0.8);
+  color: #fefefe;
+  -webkit-transform: translate(-250px, 0);
+          transform: translate(-250px, 0);
+  overflow-y: auto;
+}
+
+.navdrawer-container.open {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.app-bar,
+.navdrawer-container.opened,
+main {
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+          transition: transform 0.3s ease-out;
+}
+
+.navdrawer-container h4,
+.navdrawer-container ul li a {
+  height: 60px;
+  padding: 17px 20px;
+  line-height: 1.4;
+}
+
+.navdrawer-container h4 {
+  background-color: white;
+  color: #7B5294;
+}
+
+.navdrawer-container ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.navdrawer-container ul li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  -webkit-transition: background-color 0.2s ease-out;
+          transition: background-color 0.2s ease-out;
+  white-space: nowrap;
+}
+
+.navdrawer-container ul li {
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-color: white;
+  padding: 0;
+}
+
+.navdrawer-container ul li::before {
+  content: none;
+}
+
+.navdrawer-container ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navdrawer-container ul li a:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  outline: 0;
+}
+
+.navdrawer-container ul li a:active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+main {
+  margin: 0 auto;
+  /* Height of the header */
+  padding: 60px 16px 16px 16px;
+  min-height: 100%;
+}
+
+/** Larger Screens - desktops and tablets **/
+@media all and (min-width: 990px) {
+  .app-bar {
+    position: relative;
+  }
+
+  .app-bar.open,
+  .app-bar.open ~ main {
+    -webkit-transform: translate(0px, 0);
+            transform: translate(0px, 0);
+  }
+
+  .app-bar-container {
+    display: block;
+    /* height: 130px; */
+    max-width: 864px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    background-color: #4285f4;
+  }
+
+  .app-bar .logo {
+    float: left;
+    margin: 0;
+    padding: 0;
+    line-height: 130px;
+    font-size: 46px;
+  }
+
+  .app-bar-actions {
+    float: right;
+  }
+
+  .app-bar::after {
+    content: ' ';
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+  }
+
+  button.menu {
+    display: none;
+  }
+
+  .navdrawer-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    -webkit-transition: none;
+            transition: none;
+    overflow-y: auto;
+  }
+
+  .navdrawer-container h4 {
+    display: none;
+  }
+
+  .navdrawer-container ul {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 864px;
+    margin: 0 auto;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+
+  .navdrawer-container ul li {
+    border: none;
+  }
+
+  main {
+    max-width: 864px;
+    padding-top: 0;
+    min-height: initial;
+  }
+
+  body {
+    overflow-y: scroll;
+  }
+}
+
+/*
+ * Checkboxes and radios
+ */
+
+.control {
+  position: relative;
+  display: inline-block;
+  padding-left: 1.5rem;
+  color: #555;
+  cursor: pointer;
+}
+.control input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1; /* Put the input behind the label so it doesn't overlay text */
+}
+.control-indicator {
+  position: absolute;
+  top: .25rem;
+  left: 0;
+  display: block;
+  width:  1rem;
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 65%;
+  color: #eee;
+  text-align: center;
+  background-color: #eee;
+  background-size: 50% 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+/* Hover state */
+/* Uncomment if you need it, but be aware of the sticky iOS states.
+.control:hover .control-indicator {
+  color: #fff;
+  background-color: #ccc;
+}
+*/
+
+/* Focus */
+.control input:focus ~ .control-indicator {
+  box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
+}
+
+/* Checked state */
+.control input:checked ~ .control-indicator {
+  color: #fff;
+  background-color: #0074d9;
+}
+
+/* Active */
+.control input:active ~ .control-indicator {
+  color: #fff;
+  background-color: #84c6ff;
+}
+
+/* Checkbox modifiers */
+.checkbox .control-indicator {
+  border-radius: .25rem;
+}
+.checkbox input:checked ~ .control-indicator {
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgOCA4IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA4IDgiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTYuNCwxTDUuNywxLjdMMi45LDQuNUwyLjEsMy43TDEuNCwzTDAsNC40bDAuNywwLjdsMS41LDEuNWwwLjcsMC43bDAuNy0wLjdsMy41LTMuNWwwLjctMC43TDYuNCwxTDYuNCwxeiINCgkvPg0KPC9zdmc+DQo=);
+}
+
+/* Radio modifiers */
+.radio .control-indicator {
+  border-radius: 50%;
+}
+.radio input:checked ~ .control-indicator {
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgOCA4IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA4IDgiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQsMUMyLjMsMSwxLDIuMywxLDRzMS4zLDMsMywzczMtMS4zLDMtM1M1LjcsMSw0LDF6Ii8+DQo8L3N2Zz4NCg==);
+}
+
+/* Alternately, use another character */
+.control-x input:checked ~ .control-indicator {
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iOHB4IiBoZWlnaHQ9IjhweCIgdmlld0JveD0iMCAwIDggOCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgOCA4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xLjQsMEwwLDEuNGwwLjcsMC43bDEuOCwxLjhMMC43LDUuN0wwLDYuNGwxLjQsMS40bDAuNy0wLjdsMS44LTEuOGwxLjgsMS44bDAuNywwLjdsMS40LTEuNEw3LjEsNS43DQoJTDUuMywzLjlsMS44LTEuOGwwLjctMC43TDYuNCwwTDUuNywwLjdMMy45LDIuNUwyLjEsMC43QzIuMSwwLjcsMS40LDAsMS40LDB6Ii8+DQo8L3N2Zz4NCg==);
+}
+.control-dash input:checked ~ .control-indicator {
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iOHB4IiBoZWlnaHQ9IjhweCIgdmlld0JveD0iMCAwIDggOCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgOCA4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0wLDN2Mmg4VjNIMHoiLz4NCjwvc3ZnPg0K)
+}
+
+/*
+ * Form
+ */
+
+.form {
+  margin-top: .5rem;
+}
+
+/*
+ * Select
+ */
+
+.select {
+  position: relative;
+  display: inline-block;
+  color: #555;
+}
+.select select {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  padding: .5rem 2.25rem .5rem 1rem;
+  line-height: 1.5;
+  color: #555;
+  background-color: #eee;
+  border: 0;
+  border-radius: .25rem;
+  cursor: pointer;
+  outline: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+/* Undo the Firefox inner focus ring */
+.select select:focus:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+/* Dropdown arrow */
+.select:after {
+  position: absolute;
+  top: 50%;
+  right: 1.25rem;
+  display: inline-block;
+  content: "";
+  width: 0;
+  height: 0;
+  margin-top: -.15rem;
+  pointer-events: none;
+  border-top: .35rem solid;
+  border-right: .35rem solid transparent;
+  border-bottom: .35rem solid transparent;
+  border-left: .35rem solid transparent;
+}
+
+/* Hover state */
+/* Uncomment if you need it, but be aware of the sticky iOS states.
+.select select:hover {
+  background-color: #ddd;
+}
+*/
+
+/* Focus */
+.select select:focus {
+  box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
+}
+
+/* Active/open */
+.select select:active {
+  color: #fff;
+  background-color: #0074d9;
+}
+
+/* Hide the arrow in IE10 and up */
+.select select::-ms-expand {
+  display: none;
+}
+
+/* Media query to target Firefox only */
+@-moz-document url-prefix() {
+  /* Firefox hack to hide the arrow */
+  .select select {
+    text-indent: 0.01px;
+    text-overflow: '';
+    padding-right: 1rem;
+  }
+
+  /* <option> elements inherit styles from <select>, so reset them. */
+  .select option {
+    background-color: white;
+  }
+}
+
+/* IE9 hack to hide the arrow */
+@media screen and (min-width:0\0) {
+  .select select {
+    z-index: 1;
+    padding: .5rem 1.5rem .5rem 1rem;
+  }
+  .select:after {
+    z-index: 5;
+  }
+  .select:before {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    bottom: 0;
+    z-index: 2;
+    content: "";
+    display: block;
+    width: 1.5rem;
+    background-color: #eee;
+  }
+  .select select:hover,
+  .select select:focus,
+  .select select:active {
+    color: #555;
+    background-color: #eee;
+  }
+}
+
+/*
+ * Input
+ */
+
+.input label {
+  display: block;
+  text-align: left;
+}
+
+.input input {
+  display: block;
+  min-width: 14rem;
+  height: 2.5rem;
+  padding: .5rem 1rem;
+  line-height: 1.5;
+  color: #555;
+  background-color: #fff;
+  border: .075rem solid #ddd;
+  border-radius: .25rem;
+  box-shadow: inset 0 .2rem .4rem rgba(0,0,0,.05);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+/* Focus */
+.input input:focus {
+  box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
+}
+
+.control,
+.input {
+  display: block;
+}
+.control + .control,
+.input + .input {
+  margin-top: .5rem;
+}
+
+.highlight-module--layouts,
+.highlight-module--user,
+.highlight-module--performance { color: #fff; }
+.highlight-module--layouts::after { background-color: #297ea9; }
+.highlight-module--user::after { background-color: #2c8566; }
+.highlight-module--performance::after { background-color: #7b5294; }
+.highlight-module--layouts a,
+.highlight-module--user a,
+.highlight-module--performance a { color: #fff; text-decoration: underline; }
+
+.themed {
+  .theme--finance & { color: #306bae; }
+  .theme--legal & { color: #2a2764; }
+  .theme--strategy & { color: #54a3a6; }
+  .theme--user & { color: #58b5e2; }
+}
+
+.g--40 { width: 40% !important; }
+.g--60 { width: 60% !important; }
+
+.background-size--cover { background-size: cover; }
+.color--white { color: #fff; }
+.display--table { display: table; }
+.display--table-cell { display: table-cell; }
+.vertical-align--middle { vertical-align: middle; }
+.font-size--25 { font-size: 25px; }
+.height--100 { height: 100vh; }
+.width--100 { width: 100%; }
+.min-height--480 { min-height: 480px; }
+.position--relative { position: relative; }
+.position--absolute { position: absolute; } 
+.bottom--45 { bottom: 45px; }
+.left--0 { left: -0.5%; }
+.right--0 { right: 0; }
+.text-align--left { text-align: left !important; }
+.text-align--center { text-align: center; }
+.margin-top--25 { margin-top: 25px; }
+.margin-bottom--25 { margin-bottom: 25px; }
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: url(/fonts/RobotoCondensed-Light.eot);
+  src: local('Roboto Condensed Light'), local('RobotoCondensed-Light'), url(/fonts/RobotoCondensed-Light.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-Light.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/RobotoCondensed-Regular.eot);
+  src: local('Roboto Condensed Regular'), local('RobotoCondensed-Regular'), url(/fonts/RobotoCondensed-Regular.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/RobotoCondensed-Bold.eot);
+  src: local('Roboto Condensed Regular'), local('RobotoCondensed-Bold'), url(/fonts/RobotoCondensed-Bold.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-Bold.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 300;
+  src: url(/fonts/RobotoCondensed-LightItalic.eot);
+  src: local('Roboto Condensed Light Italic'), local('RobotoCondensed-LightItalic'), url(/fonts/RobotoCondensed-LightItalic.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-LightItalic.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 400;
+  src: url(/fonts/RobotoCondensed-Italic.eot);
+  src: local('Roboto Condensed Italic'), local('RobotoCondensed-Italic'), url(/fonts/RobotoCondensed-Italic.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-Italic.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 700;
+  src: url(/fonts/RobotoCondensed-BoldItalic.eot);
+  src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url(/fonts/RobotoCondensed-BoldItalic.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-BoldItalic.woff) format('woff');
+}
